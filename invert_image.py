@@ -22,5 +22,5 @@ def main(target_dir, desired):
 
 
 if __name__ == "__main__":
-    target_dir = "C:\\Users\\yello\\OneDrive - University of Cambridge\\Obsidian\\Cambridge\\img"
+    target_dir = ""
     main(target_dir, int(sys.argv[1])) # the first arguement is either 0 for make the images dark theme or 1 for make them light theme
