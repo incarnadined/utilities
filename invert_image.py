@@ -16,14 +16,9 @@ def main(target_dir, desired):
     for image in imgs:
         img = cv2.imread(os.path.join(target_dir, image))
         avg = np.average(img)
-        if desired:
-            if avg < 55:
-                Image.fromarray(np.invert(img)).save(os.path.join(target_dir, image))
-                print(f"Converted {image} to white")
-        else:
-            if avg > 150:
-                Image.fromarray(np.invert(img)).save(os.path.join(target_dir, image))
-                print(f"Converted {image} to black")
+        if (desired and avg < 55) or (not desired and avg > 150):
+            Image.fromarray(np.invert(img)).save(os.path.join(target_dir, image))
+            print(f"Converted {image} ")
 
 
 if __name__ == "__main__":
