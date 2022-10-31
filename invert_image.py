@@ -16,8 +16,16 @@ def main(target_dir, desired):
     for image in imgs:
         img = cv2.imread(os.path.join(target_dir, image))
         avg = np.average(img)
-        Image.fromarray(np.invert(img)).save(os.path.join(target_dir, image))
+        if desired:
+            if avg < 55:
+                Image.fromarray(np.invert(img)).save(os.path.join(target_dir, image))
+                print(f"Converted {image} to white")
+        else:
+            if avg > 150:
+                Image.fromarray(np.invert(img)).save(os.path.join(target_dir, image))
+                print(f"Converted {image} to black")
+
 
 if __name__ == "__main__":
-    target_dir = ""
+    target_dir = "C:\\Users\\yello\\OneDrive - University of Cambridge\\Obsidian\\Cambridge\\img"
     main(target_dir, int(sys.argv[1])) # the first arguement is either 0 for make the images dark theme or 1 for make them light theme
